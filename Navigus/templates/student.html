@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet">>
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/heading.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/body.css') }}">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">Dashboard</a>
+            <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded"
+                type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('student') }}">Home</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('score') }}">Score</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image--><img class="masthead-avatar mb-5"
+                src="{{ url_for('static',filename='assets/img/avataaars.svg' )}}" alt="">
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading mb-0">Welcome {{ g.stu_name }}</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="pre-wrap masthead-subheading font-weight-light mb-0">Find your courses below</p>
+        </div>
+    </header>
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <div class="text-center">
+                <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Courses</h2>
+            </div><br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Courses</th>
+                        <th scope="col">Quiz Questions</th>
+                        <th scope="col">Total Marks</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for q in quiz %}
+                    <tr>
+                        <th scope="row">{{ q[0] }}</th>
+                        <td>{{ q[1] }}</td>
+                        <td>{{ q[2] }}</td>
+                        <td><a href="/student/{{ q[0] }}"><button type="button"
+                            class="btn btn-secondary">Take</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- Portfolio Grid Items-->
+
+        </div>
+    </section>
+
+
+
+
+</body>
+
+</html>

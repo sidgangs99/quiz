@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet">>
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/heading.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/body.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body id="page-top">
+
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger">Dashboard</a>
+            <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded"
+                type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('teacher') }}">Home</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('view') }}">Courses</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading mb-0">{{ g.tea_name }}</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="pre-wrap masthead-subheading font-weight-light mb-0">Opened {{ g.name }} Course</p>
+        </div>
+    </header>
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <br>
+            <!-- Portfolio Grid Items-->
+            <div class="jumbotron">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Question</th>
+                                <th scope="col">Option 1</th>
+                                <th scope="col">Option 2</th>
+                                <th scope="col">Option 3</th>
+                                <th scope="col">Option 4</th>
+                                <th scope="col">Answer</th>
+                                <th scope="col">Score</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for q in quiz %}
+                            <tr>
+                                <th scope="row">{{ q[2] }}</th>
+                                <td>{{ q[3] }}</td>
+                                <td>{{ q[4] }}</td>
+                                <td>{{ q[5] }}</td>
+                                <td>{{ q[6] }}</td>
+                                <td><b>{{ q[7] }}</b></td>
+                                <td>{{ q[8] }}</td>
+                                <td>EDIT</td>
+                                <td><a href="view_course/delete/{{ q[0] }}"><button type="button" class="btn btn-secondary bton">Delete</button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <form action="/view_course/add" method="POST"><br>
+                        <label class="control-label col-md-10">Add question
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" name="addQues" class="form-control"
+                                placeholder="Add Question"> <br>
+                        </div>
+
+                        <div class="col-md-5">
+                            <input type="text" name="option1" class="form-control"
+                                placeholder="option 1">
+                        </div>
+
+                        <div class="col-md-5">
+                            <input type="text" name="option2" class="form-control"
+                                placeholder="Opiton 2">
+                        </div>
+
+                        <div class="col-md-5">
+                            <input type="text" name="option3" class="form-control"
+                                placeholder="option 3">
+                         </div>
+                        <div class="col-md-5">
+                            <input type="text" name="option4" class="form-control"
+                                placeholder="option 4">
+                        </div><br>
+                        <label class="control-label col-md-10">Answer
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" name="answer" class="form-control"
+                                placeholder="Answer">
+                        </div>
+                        <label class="control-label col-md-10">
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" name="mark" class="form-control"
+                                placeholder="Question marks">
+                        </div><br>
+                        <button type="submit" class="btn btn-secondary text-center align-self-center">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</div>
+</div>
+</section>
+</body>
+
+</html>

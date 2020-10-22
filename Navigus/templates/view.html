@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet">>
+    <!-- Fonts CSS-->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/heading.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/body.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body id="page-top">
+    
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger">Dashboard</a>
+            <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded"
+                type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('teacher') }}">Home</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('view') }}">Courses</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading mb-0">{{ g.tea_name }}</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="pre-wrap masthead-subheading font-weight-light mb-0">Your courses !!</p>
+        </div>
+    </header>
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <div class="text-center">
+                <h2>All courses</h2>
+            </div>
+            <br>
+            <br>
+            <!-- Portfolio Grid Items-->
+            <div class="jumbotron">
+                <!-- Portfolio Items-->
+                <div class="col-md-50 col-lg-20 mb-20 ">
+                    <div class="w-75">
+                        <div class="col-md-10 ">
+
+                            <table style="width:100%; padding-left: 15px;">
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                </tr>
+                                {% for q in quiz %}
+                                <tr>
+                                    <td>{{ q[0] }}</td>
+                                    <td><a href="/delete/{{ q[0] }}"><button type="button"
+                                                class="btn btn-secondary bton">Delete</button></a></td>
+                                    <td><a href="/edit/{{ q[0] }}"><button type="button"
+                                                class="btn btn-secondary bton">View</button></a></td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+
+                            </select><br>
+
+                            <br>
+                            <div class="form-group">
+                                <form action="/add" method="POST"><br>
+                                    <label class="control-label col-md-20">Course Name (Optional)
+                                    </label>
+                                    <div class="col-md-20">
+                                        <input type="text" name="addCourse" class="form-control"
+                                            placeholder="Add course"> <br>
+                                        <button type="submit" class="btn btn-secondary bton">Add</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+  <section class="hero is-info is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <form method="POST">
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input" id="text1" type="text" name="username" placeholder="Username">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Email</label>
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" id="text3" type="text" name="email" placeholder="Email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <p class="control has-icons-left">
+                  <input class="input" id="text2" type="password" name="password" placeholder="Password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <label class="label">Occupation</label>
+                <p class="control has-icons-left">
+									<div class="input">
+										<label class="radio-inline">
+											<input type="radio" name="type" value="1" > Teacher </label>
+											<label class="radio-inline" style="padding-left: 20px;">
+											<input type="radio" name="type" value="0" checked> Student </label>
+									</div>
+                  
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button type="submit" id="myBtn1" class="button is-success">
+                    Signup
+                  </button>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+
+</html>
